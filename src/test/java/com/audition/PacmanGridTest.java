@@ -15,19 +15,27 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testGridWidth() throws Exception {
-		assertEquals(testGrid.getWidth(), 28);
+		assertEquals(28, testGrid.getWidth());
 	}
 	
 	public void testGridHeight() throws Exception {
-		assertEquals(testGrid.getHeight(), 31);
+		assertEquals(31, testGrid.getHeight());
 	}
 	
 	public void testGridFilledWithDots() throws Exception {
 		for(int i = 0; i < testGrid.getWidth(); i++) {
 			for(int j = 0; j < testGrid.getHeight(); j++) {
-				assertEquals(testGrid.getCell(i, j), true);
+				PacObjects curr = testGrid.getCell(i,j);
+				if(curr != PacObjects.PACMAN) {
+					assertEquals(PacObjects.DOT, curr);
+				}
 			}
 		}
+	}
+	
+	public void testPacmanOnGrid() throws Exception {
+		// Pacman spawns at cell 14, 23
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(14,23));
 	}
 	
 }
