@@ -18,8 +18,18 @@ public class PacmanCharacterTest extends TestCase {
 		assertNotNull(testChar.getDirection());
 	}
 	
-	public void testPacmanLeft() {
+	public void testPacmanDefault() {
 		assertEquals(testChar.getDirection(), PacDirection.LEFT);
+	}
+	
+	public void testPacmanLeft() {
+		testChar.setDirection(PacDirection.LEFT);
+		assertEquals(testChar.getDirection(), PacDirection.LEFT);
+	}
+	
+	public void testPacmanRight() {
+		testChar.setDirection(PacDirection.RIGHT);
+		assertEquals(testChar.getDirection(), PacDirection.RIGHT);
 	}
 	
 }
