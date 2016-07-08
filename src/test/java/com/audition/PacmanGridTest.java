@@ -10,19 +10,19 @@ public class PacmanGridTest extends TestCase {
 		testGrid = new PacmanGrid(28, 31);
 	}
 	
-	public void testGenerateGrid() throws Exception {
+	public void testGenerateGrid() {
 		assertNotNull(testGrid);
 	}
 	
-	public void testGridWidth() throws Exception {
+	public void testGridWidth() {
 		assertEquals(28, testGrid.getWidth());
 	}
 	
-	public void testGridHeight() throws Exception {
+	public void testGridHeight() {
 		assertEquals(31, testGrid.getHeight());
 	}
 	
-	public void testGridFilledWithDots() throws Exception {
+	public void testGridFilledWithDots() {
 		for(int i = 0; i < testGrid.getHeight(); i++) {
 			for(int j = 0; j < testGrid.getWidth(); j++) {
 				PacObjects curr = testGrid.getCell(i,j);
@@ -33,7 +33,7 @@ public class PacmanGridTest extends TestCase {
 		}
 	}
 	
-	public void testPacmanOnGrid() throws Exception {
+	public void testPacmanOnGrid() {
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(23, 14));
 	}
 	

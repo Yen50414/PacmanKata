@@ -10,8 +10,16 @@ public class PacmanCharacterTest extends TestCase {
 		testChar = new PacmanCharacter();
 	}
 	
-	public void testInitializeCharacter() throws Exception {
+	public void testInitializeCharacter() {
 		assertNotNull(testChar);
+	}
+	
+	public void testPacmanHasDirection() {
+		assertNotNull(testChar.getDirection());
+	}
+	
+	public void testPacmanLeft() {
+		assertEquals(testChar.getDirection(), PacDirection.LEFT);
 	}
 	
 }
