@@ -32,4 +32,42 @@ public class PacmanCharacterTest extends TestCase {
 		assertEquals(testChar.getDirection(), PacDirection.RIGHT);
 	}
 	
+	public void testPacmanUp() {
+		testChar.setDirection(PacDirection.UP);
+		assertEquals(testChar.getDirection(), PacDirection.UP);
+	}
+	
+	public void testPacmanDown() {
+		testChar.setDirection(PacDirection.DOWN);
+		assertEquals(testChar.getDirection(), PacDirection.DOWN);
+	}
+	
+	public void testPacmanLRL() {
+		testChar.setDirection(PacDirection.LEFT);
+		testChar.setDirection(PacDirection.RIGHT);
+		testChar.setDirection(PacDirection.LEFT);
+		assertEquals(testChar.getDirection(), PacDirection.LEFT);
+	}
+	
+	public void testPacmanUDU() {
+		testChar.setDirection(PacDirection.UP);
+		testChar.setDirection(PacDirection.DOWN);
+		testChar.setDirection(PacDirection.UP);
+		assertEquals(testChar.getDirection(), PacDirection.UP);
+	}
+	
+	public void testPacmanRLR() {
+		testChar.setDirection(PacDirection.RIGHT);
+		testChar.setDirection(PacDirection.LEFT);
+		testChar.setDirection(PacDirection.RIGHT);
+		assertEquals(testChar.getDirection(), PacDirection.RIGHT);
+	}
+	
+	public void testPacmanDUD() {
+		testChar.setDirection(PacDirection.DOWN);
+		testChar.setDirection(PacDirection.UP);
+		testChar.setDirection(PacDirection.DOWN);
+		assertEquals(testChar.getDirection(), PacDirection.DOWN);
+	}
+	
 }
