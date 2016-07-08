@@ -23,8 +23,8 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testGridFilledWithDots() throws Exception {
-		for(int i = 0; i < testGrid.getWidth(); i++) {
-			for(int j = 0; j < testGrid.getHeight(); j++) {
+		for(int i = 0; i < testGrid.getHeight(); i++) {
+			for(int j = 0; j < testGrid.getWidth(); j++) {
 				PacObjects curr = testGrid.getCell(i,j);
 				if(curr != PacObjects.PACMAN) {
 					assertEquals(PacObjects.DOT, curr);
@@ -34,7 +34,7 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testPacmanOnGrid() throws Exception {
-		// Pacman spawns at cell 14, 23
+		// Pacman spawns at cell 14,23
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(14,23));
 	}
 	

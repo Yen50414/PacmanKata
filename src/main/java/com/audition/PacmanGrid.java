@@ -14,11 +14,11 @@ public class PacmanGrid {
 		gridWidth = width;
 		gridHeight = height;
 		
-		grid = new PacObjects[gridWidth][gridHeight];
+		grid = new PacObjects[gridHeight][gridWidth];
 	
 		// fill grid with dots
-		for(int i = 0; i < gridWidth; i++) {
-			for(int j = 0; j < gridHeight; j++) {
+		for(int i = 0; i < gridHeight; i++) {
+			for(int j = 0; j < gridWidth; j++) {
 				grid[i][j] = PacObjects.DOT;
 			}
 		}
@@ -26,8 +26,8 @@ public class PacmanGrid {
 		pacmanPosX = 14;
 		pacmanPosY = 23;
 		
-		// spawn pacman at 14,23
-		grid[pacmanPosX][pacmanPosY] = PacObjects.PACMAN;
+		// spawn pacman
+		grid[pacmanPosY][pacmanPosX] = PacObjects.PACMAN;
 	}
 	
 	public int getWidth() {
