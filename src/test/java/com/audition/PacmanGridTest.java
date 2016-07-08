@@ -34,8 +34,7 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testPacmanOnGrid() throws Exception {
-		// Pacman spawns at cell 14,23
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(14,23));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(23, 14));
 	}
 	
 }
