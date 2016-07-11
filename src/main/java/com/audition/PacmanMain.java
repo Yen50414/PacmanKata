@@ -1,5 +1,7 @@
 package com.audition;
 
+import java.util.Scanner;
+
 public class PacmanMain {
 	
 	private static PacmanGrid gameGrid;
@@ -21,8 +23,18 @@ public class PacmanMain {
 	}
 
 	public static void main(String[] args) {
+		
+		Scanner keyboard = new Scanner(System.in);
 		gameGrid = new PacmanGrid(28, 31);
-		printGrid();
+		
+		try {
+			while(true) {
+				gameGrid.update(keyboard.next().charAt(0));
+				printGrid();
+			}
+		} finally {
+			keyboard.close();
+		}
 	}
 
 }
