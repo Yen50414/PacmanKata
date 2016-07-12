@@ -7,8 +7,7 @@ public class PacmanGrid {
 	
 	PacObjects[][] grid;
 	
-	private int pacmanPosX;
-	private int pacmanPosY;
+	PacmanCharacter pacman;
 	
 	public PacmanGrid(int width, int height) {
 		gridWidth = width;
@@ -23,11 +22,9 @@ public class PacmanGrid {
 			}
 		}
 		
-		pacmanPosX = 14;
-		pacmanPosY = 23;
-		
 		// spawn pacman
-		grid[pacmanPosY][pacmanPosX] = PacObjects.PACMAN;
+		pacman = new PacmanCharacter();
+		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 	}
 	
 	public int getWidth() {
@@ -43,18 +40,18 @@ public class PacmanGrid {
 	}
 	
 	public int getPacmanPosX() {
-		return pacmanPosX;
+		return pacman.getPacmanPosX();
 	}
 	
 	public int getPacmanPosY() {
-		return pacmanPosY;
+		return pacman.getPacmanPosY();
 	}
 	
 	public void update(char input) {
 		if (input == 'w') {
-			grid[pacmanPosY][pacmanPosX] = PacObjects.DOT;
-			pacmanPosY--;
-			grid[pacmanPosY][pacmanPosX] = PacObjects.PACMAN;
+			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.DOT;
+			pacman.update(input);
+			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 		}
 	}
 }
