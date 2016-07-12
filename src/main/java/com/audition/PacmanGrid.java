@@ -41,4 +41,16 @@ public class PacmanGrid {
 	public PacObjects getCell(int x, int y) {
 		return grid[x][y];
 	}
+
+	public void update(char input) {
+		System.out.println(input);
+	}
+	
+	public int getPacmanPosX() {
+		return pacmanPosX;
+	}
+	
+	public int getPacmanPosY() {
+		return pacmanPosY;
+	}
 }

@@ -37,4 +37,12 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(23, 14));
 	}
 	
+	public void testPacmanPosX() {
+		assertEquals(14, testGrid.getPacmanPosX());
+	}
+	
+	public void testPacmanPosY() {
+		assertEquals(23, testGrid.getPacmanPosY());
+	}
+	
 }
