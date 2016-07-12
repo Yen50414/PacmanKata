@@ -25,7 +25,7 @@ public class PacmanGridTest extends TestCase {
 	public void testGridFilledWithDots() {
 		for(int i = 0; i < testGrid.getHeight(); i++) {
 			for(int j = 0; j < testGrid.getWidth(); j++) {
-				PacObjects curr = testGrid.getCell(i,j);
+				PacObjects curr = testGrid.getCell(j,i);
 				if(curr != PacObjects.PACMAN) {
 					assertEquals(PacObjects.DOT, curr);
 				}
@@ -34,7 +34,7 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testPacmanOnGrid() {
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(23, 14));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(14, 23));
 	}
 	
 	public void testPacmanPosX() {
@@ -43,6 +43,23 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanPosY() {
 		assertEquals(23, testGrid.getPacmanPosY());
+	}
+	
+	public void testUpdatePosKeyw() {
+		// Save current pos
+		int posY = testGrid.getPacmanPosY();
+		
+		testGrid.update('w');
+		
+		// Pacman should move up
+		assertEquals(posY-1, testGrid.getPacmanPosY());
+	}
+	
+	public void testUpdateGridKeyw() {
+		testGrid.update('w');
+		
+		// Pacman should move up
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(testGrid.getPacmanPosX(), testGrid.getPacmanPosY()));
 	}
 	
 }

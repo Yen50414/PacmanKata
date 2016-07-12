@@ -39,11 +39,7 @@ public class PacmanGrid {
 	}
 	
 	public PacObjects getCell(int x, int y) {
-		return grid[x][y];
-	}
-
-	public void update(char input) {
-		System.out.println(input);
+		return grid[y][x];
 	}
 	
 	public int getPacmanPosX() {
@@ -52,5 +48,13 @@ public class PacmanGrid {
 	
 	public int getPacmanPosY() {
 		return pacmanPosY;
+	}
+	
+	public void update(char input) {
+		if (input == 'w') {
+			grid[pacmanPosY][pacmanPosX] = PacObjects.DOT;
+			pacmanPosY--;
+			grid[pacmanPosY][pacmanPosX] = PacObjects.PACMAN;
+		}
 	}
 }
