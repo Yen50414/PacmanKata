@@ -11,7 +11,7 @@ public class PacmanMain {
 		
 		for(int i = 0; i < gameGrid.getHeight(); i++) {
 			for(int j = 0; j < gameGrid.getWidth(); j++) {
-				PacObjects curr = gameGrid.getCell(i,j);
+				PacObjects curr = gameGrid.getCell(j,i);
 				if(curr == PacObjects.PACMAN) {
 					System.out.print("V ");
 				} else {
