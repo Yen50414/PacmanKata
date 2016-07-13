@@ -33,6 +33,8 @@ public class PacmanCharacter {
 	public void update(char input) {
 		if (input == 'w') {
 			pacmanPosY--;
+		} else if (input == 's') {
+			pacmanPosY++;
 		}
 	}
 }

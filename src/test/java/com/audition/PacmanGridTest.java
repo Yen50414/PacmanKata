@@ -45,21 +45,26 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(23, testGrid.getPacmanPosY());
 	}
 	
-	public void testUpdatePosKeyw() {
+	public void testUpdateGridKeyw() {
 		// Save current pos
+		int posX = testGrid.getPacmanPosX();
 		int posY = testGrid.getPacmanPosY();
 		
 		testGrid.update('w');
 		
 		// Pacman should move up
-		assertEquals(posY-1, testGrid.getPacmanPosY());
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX, posY-1));
 	}
 	
-	public void testUpdateGridKeyw() {
-		testGrid.update('w');
+	public void testUpdateGridKeys() {
+		// Save current pos
+		int posX = testGrid.getPacmanPosX();
+		int posY = testGrid.getPacmanPosY();
 		
-		// Pacman should move up
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(testGrid.getPacmanPosX(), testGrid.getPacmanPosY()));
+		testGrid.update('s');
+		
+		// Pacman should move down
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX, posY+1));
 	}
 	
 }
