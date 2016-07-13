@@ -49,13 +49,13 @@ public class PacmanGrid {
 	
 	public void update(char input) {
 		
-		if (input == ' ') {
+		if (input == 'q') {
 			System.out.println("Exiting game...");
 			System.exit(0);
 		}
 		
 		// Update current pacman location
-		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.DOT;
+		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
 		
 		pacman.update(input, gridWidth, gridHeight);
 		

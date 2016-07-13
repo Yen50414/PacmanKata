@@ -23,8 +23,10 @@ public class PacmanMain {
 				PacObjects curr = gameGrid.getCell(j,i);
 				if(curr == PacObjects.PACMAN) {
 					System.out.print("V ");
-				} else {
+				} else if(curr == PacObjects.DOT) {
 					System.out.print(". ");
+				} else {
+					System.out.print("  ");
 				}
 			}
 			System.out.print(eol);
