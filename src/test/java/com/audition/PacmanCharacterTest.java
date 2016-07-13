@@ -116,4 +116,23 @@ public class PacmanCharacterTest extends TestCase {
 		assertEquals(posX+1, testChar.getPacmanPosX());
 	}
 	
+	public void testPosWrapAroundUp() {
+		// Start Pacman up at top of grid
+		testChar = new PacmanCharacter(defaultPacmanX, 0);
+		
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should be at bottom of grid
+		assertEquals(defaultGridHeight-1, testChar.getPacmanPosY());
+	}
+	
+	public void testPosWrapAroundDown() {
+		// Start Pacman up at bottom of grid
+		testChar = new PacmanCharacter(defaultPacmanX, defaultGridHeight-1);
+		
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should be at top of grid
+		assertEquals(0, testChar.getPacmanPosY());
+	}
 }

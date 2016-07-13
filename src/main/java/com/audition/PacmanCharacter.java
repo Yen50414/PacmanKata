@@ -38,6 +38,9 @@ public class PacmanCharacter {
 			}
 		} else if (input == 's') {
 			pacmanPosY++;
+			if (pacmanPosY >= gridHeight) {
+				pacmanPosY = 0;
+			}
 		} else if (input == 'a') {
 			pacmanPosX--;
 		} else if (input == 'd') {

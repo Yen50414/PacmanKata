@@ -95,16 +95,23 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX+1, posY));
 	}
 	
-	public void testWrapAroundUp() {
+	public void testGridWrapAroundUp() {
 		// Start Pacman up at top of grid
-		int pacX = 0;
-		int pacY = 0;
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, pacX, pacY);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, 0);
 		
 		testGrid.update('w');
 		
-		// Pacman should be at buttom of grid
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(pacX, defaultGridHeight-1));
+		// Pacman should be at bottom of grid
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultPacmanX, defaultGridHeight-1));
 	}
-
+	
+	public void testGridWrapAroundDown() {
+		// Start Pacman up at bottom of grid
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultGridHeight-1);
+		
+		testGrid.update('s');
+		
+		// Pacman should be at top of grid
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultPacmanX, 0));
+	}
 }
