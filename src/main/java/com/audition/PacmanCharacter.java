@@ -30,9 +30,12 @@ public class PacmanCharacter {
 		return pacmanPosY;
 	}
 	
-	public void update(char input) {
+	public void update(char input, int gridWidth, int gridHeight) {
 		if (input == 'w') {
 			pacmanPosY--;
+			if (pacmanPosY < 0) {
+				pacmanPosY = gridHeight-1;
+			}
 		} else if (input == 's') {
 			pacmanPosY++;
 		} else if (input == 'a') {

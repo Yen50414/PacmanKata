@@ -96,11 +96,15 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testWrapAroundUp() {
+		// Start Pacman up at top of grid
 		int pacX = 0;
 		int pacY = 0;
-		
 		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, pacX, pacY);
 		
+		testGrid.update('w');
 		
+		// Pacman should be at buttom of grid
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(pacX, defaultGridHeight-1));
 	}
+
 }

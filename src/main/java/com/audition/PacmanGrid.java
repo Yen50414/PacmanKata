@@ -57,7 +57,7 @@ public class PacmanGrid {
 		// Update current pacman location
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.DOT;
 		
-		pacman.update(input);
+		pacman.update(input, gridWidth, gridHeight);
 		
 		// Update grid with new pacman location
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;

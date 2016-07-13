@@ -6,8 +6,14 @@ public class PacmanCharacterTest extends TestCase {
 	
 	PacmanCharacter testChar;
 	
+	private static int defaultGridWidth = 28;
+	private static int defaultGridHeight = 31;
+	
+	private static int defaultPacmanX = 14;
+	private static int defaultPacmanY = 23;
+	
 	public void setUp() {
-		testChar = new PacmanCharacter(14, 23);
+		testChar = new PacmanCharacter(defaultPacmanX, defaultPacmanY);
 	}
 	
 	public void testInitializeCharacter() {
@@ -74,7 +80,7 @@ public class PacmanCharacterTest extends TestCase {
 		// Save current pos
 		int posY = testChar.getPacmanPosY();
 		
-		testChar.update('w');
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move up
 		assertEquals(posY-1, testChar.getPacmanPosY());
@@ -84,7 +90,7 @@ public class PacmanCharacterTest extends TestCase {
 		// Save current pos
 		int posY = testChar.getPacmanPosY();
 		
-		testChar.update('s');
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move down
 		assertEquals(posY+1, testChar.getPacmanPosY());
@@ -94,7 +100,7 @@ public class PacmanCharacterTest extends TestCase {
 		// Save current pos
 		int posX = testChar.getPacmanPosX();
 		
-		testChar.update('a');
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move up
 		assertEquals(posX-1, testChar.getPacmanPosX());
@@ -104,7 +110,7 @@ public class PacmanCharacterTest extends TestCase {
 		// Save current pos
 		int posX = testChar.getPacmanPosX();
 		
-		testChar.update('d');
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move down
 		assertEquals(posX+1, testChar.getPacmanPosX());
