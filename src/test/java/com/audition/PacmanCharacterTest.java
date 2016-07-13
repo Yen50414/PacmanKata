@@ -7,7 +7,7 @@ public class PacmanCharacterTest extends TestCase {
 	PacmanCharacter testChar;
 	
 	public void setUp() {
-		testChar = new PacmanCharacter();
+		testChar = new PacmanCharacter(14, 23);
 	}
 	
 	public void testInitializeCharacter() {

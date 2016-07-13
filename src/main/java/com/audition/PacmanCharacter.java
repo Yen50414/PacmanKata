@@ -7,11 +7,11 @@ public class PacmanCharacter {
 	private int pacmanPosX;
 	private int pacmanPosY;
 	
-	public PacmanCharacter() {
+	public PacmanCharacter(int x, int y) {
 		direction = PacDirection.LEFT; // Default to facing left
 		
-		pacmanPosX = 14;
-		pacmanPosY = 23;
+		pacmanPosX = x;
+		pacmanPosY = y;
 	}
 	
 	public PacDirection getDirection() {

@@ -23,7 +23,7 @@ public class PacmanGrid {
 		}
 		
 		// spawn pacman
-		pacman = new PacmanCharacter();
+		pacman = new PacmanCharacter(14, 23);
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 	}
 	
