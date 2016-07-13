@@ -67,4 +67,26 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX, posY+1));
 	}
 	
+	public void testUpdateGridKeya() {
+		// Save current pos
+		int posX = testGrid.getPacmanPosX();
+		int posY = testGrid.getPacmanPosY();
+		
+		testGrid.update('a');
+		
+		// Pacman should move up
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX-1, posY));
+	}
+	
+	public void testUpdateGridKeyd() {
+		// Save current pos
+		int posX = testGrid.getPacmanPosX();
+		int posY = testGrid.getPacmanPosY();
+		
+		testGrid.update('d');
+		
+		// Pacman should move down
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX+1, posY));
+	}
+	
 }
