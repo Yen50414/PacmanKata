@@ -35,6 +35,10 @@ public class PacmanCharacter {
 			pacmanPosY--;
 		} else if (input == 's') {
 			pacmanPosY++;
+		} else if (input == 'a') {
+			pacmanPosX--;
+		} else if (input == 'd') {
+			pacmanPosX++;
 		}
 	}
 }

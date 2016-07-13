@@ -90,4 +90,24 @@ public class PacmanCharacterTest extends TestCase {
 		assertEquals(posY+1, testChar.getPacmanPosY());
 	}
 	
+	public void testUpdatePosKeya() {
+		// Save current pos
+		int posX = testChar.getPacmanPosX();
+		
+		testChar.update('a');
+		
+		// Pacman should move up
+		assertEquals(posX-1, testChar.getPacmanPosX());
+	}
+	
+	public void testUpdatePosKeyd() {
+		// Save current pos
+		int posX = testChar.getPacmanPosX();
+		
+		testChar.update('d');
+		
+		// Pacman should move down
+		assertEquals(posX+1, testChar.getPacmanPosX());
+	}
+	
 }
