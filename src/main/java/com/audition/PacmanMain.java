@@ -18,12 +18,12 @@ public class PacmanMain {
 		String eol = System.getProperty("line.separator");
 		
 		// Print current state of grid to screen
-		for(int i = 0; i < gameGrid.getHeight(); i++) {
-			for(int j = 0; j < gameGrid.getWidth(); j++) {
+		for (int i = 0; i < gameGrid.getHeight(); i++) {
+			for (int j = 0; j < gameGrid.getWidth(); j++) {
 				PacObjects curr = gameGrid.getCell(j,i);
-				if(curr == PacObjects.PACMAN) {
-					System.out.print("V ");
-				} else if(curr == PacObjects.DOT) {
+				if (curr == PacObjects.PACMAN) {
+					System.out.print(gameGrid.getPacDisplay() + " ");
+				} else if (curr == PacObjects.DOT) {
 					System.out.print(". ");
 				} else {
 					System.out.print("  ");

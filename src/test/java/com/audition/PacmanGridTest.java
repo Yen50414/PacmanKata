@@ -143,4 +143,28 @@ public class PacmanGridTest extends TestCase {
 		
 		assertEquals(PacObjects.EMPTY, testGrid.getCell(pacX, pacY));
 	}
+	
+	public void testGetPacmanDisplay() {
+		assertEquals(">", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDirectionKeyw() {
+		testGrid.update('w');
+		assertEquals("V", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDirectionKeys() {
+		testGrid.update('s');
+		assertEquals("^", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDirectionKeya() {
+		testGrid.update('a');
+		assertEquals(">", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDirectionKeyd() {
+		testGrid.update('d');
+		assertEquals("<", testGrid.getPacDisplay());
+	}
 }

@@ -5,9 +5,9 @@ public class PacmanGrid {
 	private int gridWidth;
 	private int gridHeight;
 	
-	PacObjects[][] grid;
+	private PacObjects[][] grid;
 	
-	PacmanCharacter pacman;
+	private PacmanCharacter pacman;
 	
 	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
 		gridWidth = width;
@@ -63,4 +63,20 @@ public class PacmanGrid {
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 
 	}
+
+	public String getPacDisplay() {
+		PacDirection dir = pacman.getDirection();
+		String pacDisplay = ">"; //Just default to left
+		if (dir == PacDirection.UP) {
+			pacDisplay = "V";
+		} else if (dir == PacDirection.DOWN) {
+			pacDisplay = "^";
+		} else if (dir == PacDirection.LEFT) {
+			pacDisplay = ">";
+		} else if (dir == PacDirection.RIGHT) {
+			pacDisplay = "<";
+		}
+		return pacDisplay;
+	}
+	
 }
