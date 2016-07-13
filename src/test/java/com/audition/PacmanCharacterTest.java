@@ -157,12 +157,32 @@ public class PacmanCharacterTest extends TestCase {
 	}
 	
 	public void testRotateOnKeyw() {
-		// Save current pos
-		testChar.setDirection(PacDirection.LEFT);
-		
 		testChar.update('w', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should rotate up
 		assertEquals(PacDirection.UP, testChar.getDirection());
+	}
+	
+	public void testRotateOnKeys() {
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should rotate down
+		assertEquals(PacDirection.DOWN, testChar.getDirection());
+	}
+	
+	public void testRotateOnKeya() {
+		testChar.setDirection(PacDirection.UP);
+		
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should rotate left
+		assertEquals(PacDirection.LEFT, testChar.getDirection());
+	}
+	
+	public void testRotateOnKeyd() {
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should rotate right
+		assertEquals(PacDirection.RIGHT, testChar.getDirection());
 	}
 }
