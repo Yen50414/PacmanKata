@@ -135,4 +135,25 @@ public class PacmanCharacterTest extends TestCase {
 		// Pacman should be at top of grid
 		assertEquals(0, testChar.getPacmanPosY());
 	}
+	
+	public void testPosWrapAroundLeft() {
+		// Start Pacman up at left of grid
+		testChar = new PacmanCharacter(0, defaultPacmanY);
+		
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should be at right of grid
+		assertEquals(defaultGridWidth-1, testChar.getPacmanPosX());
+	}
+	
+	public void testPosWrapAroundRight() {
+		// Start Pacman up at right of grid
+		testChar = new PacmanCharacter(defaultGridWidth-1, defaultPacmanY);
+		
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should be at left of grid
+		assertEquals(0, testChar.getPacmanPosX());
+	}
+
 }

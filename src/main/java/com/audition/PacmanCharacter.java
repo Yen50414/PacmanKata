@@ -2,7 +2,7 @@ package com.audition;
 
 public class PacmanCharacter {
 	
-	PacDirection direction;
+	private PacDirection direction;
 	
 	private int pacmanPosX;
 	private int pacmanPosY;
@@ -43,8 +43,14 @@ public class PacmanCharacter {
 			}
 		} else if (input == 'a') {
 			pacmanPosX--;
+			if (pacmanPosX < 0) {
+				pacmanPosX = gridWidth-1;
+			}
 		} else if (input == 'd') {
 			pacmanPosX++;
+			if (pacmanPosX >= gridWidth) {
+				pacmanPosX = 0;
+			}
 		}
 	}
 }
