@@ -4,10 +4,16 @@ import junit.framework.*;
 
 public class PacmanGridTest extends TestCase {
 	
-	PacmanGrid testGrid;
+	private PacmanGrid testGrid;
+	
+	private static int defaultGridWidth = 28;
+	private static int defaultGridHeight = 31;
+	
+	private static int defaultPacmanX = 14;
+	private static int defaultPacmanY = 23;
 	
 	public void setUp() {
-		testGrid = new PacmanGrid(28, 31);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
 	}
 	
 	public void testGenerateGrid() {
@@ -15,11 +21,11 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testGridWidth() {
-		assertEquals(28, testGrid.getWidth());
+		assertEquals(defaultGridWidth, testGrid.getWidth());
 	}
 	
 	public void testGridHeight() {
-		assertEquals(31, testGrid.getHeight());
+		assertEquals(defaultGridHeight, testGrid.getHeight());
 	}
 	
 	public void testGridFilledWithDots() {
@@ -34,15 +40,15 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testPacmanOnGrid() {
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(14, 23));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultPacmanX, defaultPacmanY));
 	}
 	
 	public void testPacmanPosX() {
-		assertEquals(14, testGrid.getPacmanPosX());
+		assertEquals(defaultPacmanX, testGrid.getPacmanPosX());
 	}
 	
 	public void testPacmanPosY() {
-		assertEquals(23, testGrid.getPacmanPosY());
+		assertEquals(defaultPacmanY, testGrid.getPacmanPosY());
 	}
 	
 	public void testUpdateGridKeyw() {
@@ -89,4 +95,12 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(PacObjects.PACMAN, testGrid.getCell(posX+1, posY));
 	}
 	
+	public void testWrapAroundUp() {
+		int pacX = 0;
+		int pacY = 0;
+		
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, pacX, pacY);
+		
+		
+	}
 }

@@ -9,7 +9,7 @@ public class PacmanGrid {
 	
 	PacmanCharacter pacman;
 	
-	public PacmanGrid(int width, int height) {
+	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
 		gridWidth = width;
 		gridHeight = height;
 		
@@ -23,7 +23,7 @@ public class PacmanGrid {
 		}
 		
 		// spawn pacman
-		pacman = new PacmanCharacter(14, 23);
+		pacman = new PacmanCharacter(pacmanX, pacmanY);
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 	}
 	

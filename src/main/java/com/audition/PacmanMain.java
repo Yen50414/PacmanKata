@@ -6,6 +6,12 @@ public class PacmanMain {
 	
 	private static PacmanGrid gameGrid;
 	
+	private static int defaultGridWidth = 28;
+	private static int defaultGridHeight = 31;
+	
+	private static int defaultPacmanX = 14;
+	private static int defaultPacmanY = 23;
+	
 	private static void printGrid() {
 		
 		// Get Line Seperator for current OS
@@ -28,7 +34,7 @@ public class PacmanMain {
 	public static void main(String[] args) {
 		
 		Scanner keyboard = new Scanner(System.in);
-		gameGrid = new PacmanGrid(28, 31);
+		gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
 		
 		// Print starting game state
 		printGrid();
