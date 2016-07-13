@@ -155,5 +155,14 @@ public class PacmanCharacterTest extends TestCase {
 		// Pacman should be at left of grid
 		assertEquals(0, testChar.getPacmanPosX());
 	}
-
+	
+	public void testRotateOnKeyw() {
+		// Save current pos
+		testChar.setDirection(PacDirection.LEFT);
+		
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman should rotate up
+		assertEquals(PacDirection.UP, testChar.getDirection());
+	}
 }

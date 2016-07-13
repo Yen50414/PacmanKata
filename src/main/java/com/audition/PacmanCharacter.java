@@ -36,6 +36,7 @@ public class PacmanCharacter {
 			if (pacmanPosY < 0) {
 				pacmanPosY = gridHeight-1;
 			}
+			setDirection(PacDirection.UP);
 		} else if (input == 's') {
 			pacmanPosY++;
 			if (pacmanPosY >= gridHeight) {
