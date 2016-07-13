@@ -59,6 +59,9 @@ public class PacmanGrid {
 			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 		} else if (input == 's') {
 			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
+		} else {
+			System.out.println("Exiting game...");
+			System.exit(0);
 		}
 	}
 }
