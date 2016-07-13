@@ -1,6 +1,10 @@
 Controls:
 
-WASD for Up, Left, Down, and Right.
+wasd for Up, Left, Down, and Right.
+
+The Enter key is used to activate the command since this is a console application.
+
+Currently entering any other key will exit the game.
 
 
 Pacman Grid:
