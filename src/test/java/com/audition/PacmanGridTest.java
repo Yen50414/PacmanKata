@@ -148,23 +148,47 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(">", testGrid.getPacDisplay());
 	}
 	
-	public void testGetPacmanDirectionKeyw() {
+	public void testGetPacmanDisplayKeyw() {
+		testGrid.update('w');
 		testGrid.update('w');
 		assertEquals("V", testGrid.getPacDisplay());
 	}
 	
-	public void testGetPacmanDirectionKeys() {
+	public void testGetPacmanDisplayKeys() {
+		testGrid.update('s');
 		testGrid.update('s');
 		assertEquals("^", testGrid.getPacDisplay());
 	}
 	
-	public void testGetPacmanDirectionKeya() {
+	public void testGetPacmanDisplayKeya() {
+		testGrid.update('a');
 		testGrid.update('a');
 		assertEquals(">", testGrid.getPacDisplay());
 	}
 	
-	public void testGetPacmanDirectionKeyd() {
+	public void testGetPacmanDisplayKeyd() {
+		testGrid.update('d');
 		testGrid.update('d');
 		assertEquals("<", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDisplaySecondKeyw() {
+		testGrid.update('w');
+		assertEquals("|", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDisplaySecondKeys() {
+		testGrid.update('s');
+		assertEquals("|", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDisplaySecondKeya() {
+		testGrid.update('a');
+		assertEquals("-", testGrid.getPacDisplay());
+	}
+	
+	public void testGetPacmanDisplaySecondKeyd() {
+		testGrid.update('d');
+		assertEquals("-", testGrid.getPacDisplay());
 	}
 }

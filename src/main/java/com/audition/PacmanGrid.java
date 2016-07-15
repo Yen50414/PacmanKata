@@ -65,16 +65,41 @@ public class PacmanGrid {
 	}
 
 	public String getPacDisplay() {
+		boolean mouthOpen = pacman.getMouthOpen();
 		PacDirection dir = pacman.getDirection();
+		
 		String pacDisplay = ">"; //Just default to left
-		if (dir == PacDirection.UP) {
-			pacDisplay = "V";
-		} else if (dir == PacDirection.DOWN) {
-			pacDisplay = "^";
-		} else if (dir == PacDirection.LEFT) {
-			pacDisplay = ">";
-		} else if (dir == PacDirection.RIGHT) {
-			pacDisplay = "<";
+		
+		if (mouthOpen) {
+			switch (dir) {
+				case UP: 
+					pacDisplay = "V";
+					break;
+				case DOWN:
+					pacDisplay = "^";
+					break;
+				case LEFT: 
+					pacDisplay = ">";
+					break;
+				case RIGHT:
+					pacDisplay = "<";
+					break;
+			}
+		} else {
+			switch (dir) {
+				case UP: 
+					pacDisplay = "|";
+					break;
+				case DOWN:
+					pacDisplay = "|";
+					break;
+				case LEFT: 
+					pacDisplay = "-";
+					break;
+				case RIGHT:
+					pacDisplay = "-";
+					break;
+			}
 		}
 		return pacDisplay;
 	}

@@ -185,4 +185,64 @@ public class PacmanCharacterTest extends TestCase {
 		// Pacman should rotate right
 		assertEquals(PacDirection.RIGHT, testChar.getDirection());
 	}
+	
+	public void testMouthCloseOnKeyw() {
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(false, testChar.getMouthOpen());
+	}
+	
+	public void testMouthCloseOnKeys() {
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(false, testChar.getMouthOpen());
+	}
+	
+	public void testMouthCloseOnKeya() {
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(false, testChar.getMouthOpen());
+	}
+	
+	public void testMouthCloseOnKeyd() {
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(false, testChar.getMouthOpen());
+	}
+	
+	public void testMouthOpenOnKeyw() {
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
+		testChar.update('w', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(true, testChar.getMouthOpen());
+	}
+	
+	public void testMouthOpenOnKeys() {
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
+		testChar.update('s', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(true, testChar.getMouthOpen());
+	}
+	
+	public void testMouthOpenOnKeya() {
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
+		testChar.update('a', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(true, testChar.getMouthOpen());
+	}
+	
+	public void testMouthOpenOnKeyd() {
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
+		testChar.update('d', defaultGridWidth, defaultGridHeight);
+		
+		// Pacman mouth should be closed
+		assertEquals(true, testChar.getMouthOpen());
+	}
 }

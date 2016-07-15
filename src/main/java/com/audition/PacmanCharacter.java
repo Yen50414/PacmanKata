@@ -7,11 +7,15 @@ public class PacmanCharacter {
 	private int pacmanPosX;
 	private int pacmanPosY;
 	
+	private boolean mouthOpen;
+	
 	public PacmanCharacter(int x, int y) {
 		direction = PacDirection.LEFT; // Default to facing left
 		
 		pacmanPosX = x;
 		pacmanPosY = y;
+		
+		mouthOpen = true;
 	}
 	
 	public PacDirection getDirection() {
@@ -31,6 +35,10 @@ public class PacmanCharacter {
 	}
 	
 	public void update(char input, int gridWidth, int gridHeight) {
+		// Close/Open mouth
+		mouthOpen = !mouthOpen;
+		
+		// Update Pacman position
 		if (input == 'w') { // Handle UP
 			pacmanPosY--;
 			if (pacmanPosY < 0) {
@@ -56,5 +64,9 @@ public class PacmanCharacter {
 			}
 			setDirection(PacDirection.RIGHT);
 		}
+	}
+
+	public boolean getMouthOpen() {
+		return mouthOpen;
 	}
 }
