@@ -9,22 +9,27 @@ public class PacmanGrid {
 	
 	private PacmanCharacter pacman;
 	
+	private int dotsLeft;
+	
 	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
 		gridWidth = width;
 		gridHeight = height;
 		
 		grid = new PacObjects[gridHeight][gridWidth];
+		dotsLeft = 0;
 	
 		// fill grid with dots
 		for(int i = 0; i < gridHeight; i++) {
 			for(int j = 0; j < gridWidth; j++) {
 				grid[i][j] = PacObjects.DOT;
+				dotsLeft++;
 			}
 		}
 		
 		// spawn pacman
 		pacman = new PacmanCharacter(pacmanX, pacmanY);
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
+		dotsLeft--;
 	}
 	
 	public int getWidth() {
@@ -58,6 +63,11 @@ public class PacmanGrid {
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
 		
 		pacman.update(input, gridWidth, gridHeight);
+		
+		// Update dot count
+		if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
+			dotsLeft--;
+		}
 		
 		// Update grid with new pacman location
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
@@ -102,6 +112,10 @@ public class PacmanGrid {
 			}
 		}
 		return pacDisplay;
+	}
+
+	public int getDotCount() {
+		return dotsLeft;
 	}
 	
 }

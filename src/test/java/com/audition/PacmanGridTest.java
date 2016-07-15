@@ -191,4 +191,24 @@ public class PacmanGridTest extends TestCase {
 		testGrid.update('d');
 		assertEquals("-", testGrid.getPacDisplay());
 	}
+	
+	public void testGetDotCount() {
+		assertEquals((defaultGridWidth*defaultGridHeight)-1, testGrid.getDotCount());
+	}
+	
+	public void testGetDotCountAfter1Eat() {
+		int initialDotCount = testGrid.getDotCount();
+		testGrid.update('a');
+		
+		assertEquals(initialDotCount-1, testGrid.getDotCount());
+	}
+	
+	public void testGetDotCountAfter5Eat() {
+		int initialDotCount = testGrid.getDotCount();
+		for (int i = 5; i > 0; i--) {
+			testGrid.update('a');
+		}
+		
+		assertEquals(initialDotCount-5, testGrid.getDotCount());
+	}
 }
