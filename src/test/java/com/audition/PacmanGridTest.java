@@ -211,4 +211,22 @@ public class PacmanGridTest extends TestCase {
 		
 		assertEquals(initialDotCount-5, testGrid.getDotCount());
 	}
+	
+	public void testGetLevelScore() {
+		assertEquals(0, testGrid.getLevelScore());
+	}
+	
+	public void testGetLevelScoreAfter1Eat() {
+		testGrid.update('a');
+		
+		assertEquals(10, testGrid.getLevelScore());
+	}
+	
+	public void testGetLevelScoreAfter5Eat() {
+		for (int i = 5; i > 0; i--) {
+			testGrid.update('a');
+		}
+		
+		assertEquals(50, testGrid.getLevelScore());
+	}
 }

@@ -10,6 +10,7 @@ public class PacmanGrid {
 	private PacmanCharacter pacman;
 	
 	private int dotsLeft;
+	private int levelScore;
 	
 	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
 		gridWidth = width;
@@ -17,6 +18,7 @@ public class PacmanGrid {
 		
 		grid = new PacObjects[gridHeight][gridWidth];
 		dotsLeft = 0;
+		levelScore = 0;
 	
 		// fill grid with dots
 		for(int i = 0; i < gridHeight; i++) {
@@ -64,9 +66,10 @@ public class PacmanGrid {
 		
 		pacman.update(input, gridWidth, gridHeight);
 		
-		// Update dot count
+		// Update dot count and score if one is eaten
 		if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
 			dotsLeft--;
+			levelScore = levelScore + 10;
 		}
 		
 		// Update grid with new pacman location
@@ -116,6 +119,10 @@ public class PacmanGrid {
 
 	public int getDotCount() {
 		return dotsLeft;
+	}
+	
+	public int getLevelScore() {
+		return levelScore;
 	}
 	
 }
