@@ -13,17 +13,33 @@ public class PacmanGrid {
 	private int levelScore;
 	
 	private PacObjects lookAhead(char input) {
-		switch (input) {
-		case 'w': 
-			return grid[getPacmanPosY()-1][getPacmanPosX()];
-		case 's':
-			return grid[getPacmanPosY()+1][getPacmanPosX()];
-		case 'a': 
-			return grid[getPacmanPosY()][getPacmanPosX()-1];
-		case 'd':
-			return grid[getPacmanPosY()][getPacmanPosX()+1];
+		
+		int aheadX = getPacmanPosX();
+		int aheadY = getPacmanPosY();
+		
+		if (input == 'w') { // Handle UP
+			aheadY--;
+			if (aheadY < 0) {
+				aheadY = gridHeight-1;
+			}
+		} else if (input == 's') { // Handle DOWN
+			aheadY++;
+			if (aheadY >= gridHeight) {
+				aheadY = 0;
+			}
+		} else if (input == 'a') { // Handle LEFT
+			aheadX--;
+			if (aheadX < 0) {
+				aheadX = gridWidth-1;
+			}
+		} else if (input == 'd') { // Handle RIGHT
+			aheadX++;
+			if (aheadX >= gridWidth) {
+				aheadX = 0;
+			}
 		}
-		return PacObjects.WALL; // default return wall to not do anything
+		
+		return grid[aheadY][aheadX]; // default return wall to not do anything
 	}
 	
 	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
