@@ -44,9 +44,10 @@ public class PacmanMain {
 		int levelCount = 1;
 		int totalScore = 0;
 		Scanner keyboard = new Scanner(System.in);
+		char input = ' ';
 		
 		try {
-			while (true) {
+			while (input != 'q') {
 				//gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
 				gameGrid = new PacmanGrid(2, 2, 0, 0);
 				
@@ -54,17 +55,21 @@ public class PacmanMain {
 				printGrid(levelCount, gameGrid.getLevelScore());
 				
 				// Loop until level complete
-				while (gameGrid.getDotCount() > 0) {
+				while (gameGrid.getDotCount() > 0 && input != 'q') {
+					input = keyboard.next().charAt(0);
+					
 					// Update and print new game state
-					gameGrid.update(keyboard.next().charAt(0));
+					gameGrid.update(input);
 					printGrid(levelCount, gameGrid.getLevelScore());
 				}
 				totalScore = totalScore + gameGrid.getLevelScore();
 					
 				levelCount++;
 			}
-			//System.out.println("Final Level: " + levelCount);
-			//System.out.println("Total Score: " + totalScore);
+			
+			System.out.println("Exiting game...\n");
+			System.out.println("Final Level: " + levelCount);
+			System.out.println("Total Score: " + totalScore);
 			
 		} finally {
 			keyboard.close();
