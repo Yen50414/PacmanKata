@@ -50,8 +50,9 @@ public class PacmanMain {
 		
 		try {
 			while (input != 'q') {
-				gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
-				gameGrid = new PacmanGrid(10, 10, 5, 5);
+				//gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
+				//gameGrid = new PacmanGrid(10, 10, 5, 5);
+				gameGrid = new PacmanGrid(4, 4, 1, 1);
 				
 				// Print starting game state
 				printGrid(levelCount, gameGrid.getLevelScore());

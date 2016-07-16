@@ -258,4 +258,52 @@ public class PacmanGridTest extends TestCase {
 			assertEquals(PacObjects.WALL, testGrid.getCell(testGrid.getWidth()-1, i));
 		}
 	}
+	
+	public void testPacmanStopOnWallKeyw() {
+		// Spawn pacman with wall above
+		testGrid = new PacmanGrid(4, 4, 1, 1);
+		
+		// Save current position
+		int expectedY = testGrid.getPacmanPosY();
+		
+		testGrid.update('w');
+		
+		assertEquals(expectedY, testGrid.getPacmanPosY());
+	}
+	
+	public void testPacmanStopOnWallKeys() {
+		// Spawn pacman with wall above
+		testGrid = new PacmanGrid(4, 4, 2, 2);
+		
+		// Save current position
+		int expectedY = testGrid.getPacmanPosY();
+		
+		testGrid.update('s');
+		
+		assertEquals(expectedY, testGrid.getPacmanPosY());
+	}
+	
+	public void testPacmanStopOnWallKeya() {
+		// Spawn pacman with wall above
+		testGrid = new PacmanGrid(4, 4, 1, 1);
+		
+		// Save current position
+		int expectedX = testGrid.getPacmanPosX();
+		
+		testGrid.update('a');
+		
+		assertEquals(expectedX, testGrid.getPacmanPosX());
+	}
+	
+	public void testPacmanStopOnWallKeyd() {
+		// Spawn pacman with wall above
+		testGrid = new PacmanGrid(4, 4, 2, 2);
+		
+		// Save current position
+		int expectedX = testGrid.getPacmanPosX();
+		
+		testGrid.update('d');
+		
+		assertEquals(expectedX, testGrid.getPacmanPosX());
+	}
 }

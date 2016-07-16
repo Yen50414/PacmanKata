@@ -12,6 +12,20 @@ public class PacmanGrid {
 	private int dotsLeft;
 	private int levelScore;
 	
+	private PacObjects lookAhead(char input) {
+		switch (input) {
+		case 'w': 
+			return grid[getPacmanPosY()-1][getPacmanPosX()];
+		case 's':
+			return grid[getPacmanPosY()+1][getPacmanPosX()];
+		case 'a': 
+			return grid[getPacmanPosY()][getPacmanPosX()-1];
+		case 'd':
+			return grid[getPacmanPosY()][getPacmanPosX()+1];
+		}
+		return PacObjects.WALL; // default return wall to not do anything
+	}
+	
 	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
 		gridWidth = width;
 		gridHeight = height;
@@ -80,20 +94,24 @@ public class PacmanGrid {
 	
 	public void update(char input) {
 		
-		// Update current pacman location
-		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
+		// Do nothing if pacman wants to move into a wall
+		if (lookAhead(input) != PacObjects.WALL) {
 		
-		pacman.update(input, gridWidth, gridHeight);
-		
-		// Update dot count and score if one is eaten
-		if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
-			dotsLeft--;
-			levelScore = levelScore + 10;
+			// Update current pacman location
+			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
+			
+			pacman.update(input, gridWidth, gridHeight);
+			
+			// Update dot count and score if one is eaten
+			if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
+				dotsLeft--;
+				levelScore = levelScore + 10;
+			}
+			
+			// Update grid with new pacman location
+			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
+			
 		}
-		
-		// Update grid with new pacman location
-		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
-
 	}
 
 	public String getPacDisplay() {
