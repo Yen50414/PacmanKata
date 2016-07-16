@@ -46,6 +46,14 @@ public class PacmanGrid {
 		gridWidth = width;
 		gridHeight = height;
 		
+		// Set min grid size
+		if (gridWidth < 4) {
+			gridWidth = 4;
+		}
+		if (gridHeight < 4) {
+			gridHeight = 4;
+		}
+		
 		grid = new PacObjects[gridHeight][gridWidth];
 		dotsLeft = 0;
 		levelScore = 0;
@@ -81,6 +89,8 @@ public class PacmanGrid {
 			grid[i][gridWidth-1] = PacObjects.WALL;
 			dotsLeft--;
 		}
+		
+		// Create wrap around holes half way through each wall
 		
 		// spawn pacman
 		pacman = new PacmanCharacter(pacmanX, pacmanY);
