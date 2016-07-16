@@ -28,6 +28,30 @@ public class PacmanGrid {
 			}
 		}
 		
+		// Top row are walls
+		for (int i = 0; i < gridWidth; i++) {
+			grid[0][i] = PacObjects.WALL;
+			dotsLeft--;
+		}
+		
+		// Bottom row are walls
+		for (int i = 0; i < gridWidth; i++) {
+			grid[gridHeight-1][i] = PacObjects.WALL;
+			dotsLeft--;
+		}
+		
+		// Left column are walls
+		for (int i = 1; i < gridHeight-1; i++) {
+			grid[i][0] = PacObjects.WALL;
+			dotsLeft--;
+		}
+		
+		// Right column are walls
+		for (int i = 1; i < gridHeight-1; i++) {
+			grid[i][gridWidth-1] = PacObjects.WALL;
+			dotsLeft--;
+		}
+		
 		// spawn pacman
 		pacman = new PacmanCharacter(pacmanX, pacmanY);
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;

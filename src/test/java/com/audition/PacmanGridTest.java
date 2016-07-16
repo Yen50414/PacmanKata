@@ -29,10 +29,10 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testGridFilledWithDots() {
-		for(int i = 0; i < testGrid.getHeight(); i++) {
-			for(int j = 0; j < testGrid.getWidth(); j++) {
+		for (int i = 1; i < testGrid.getHeight()-1; i++) {
+			for (int j = 1; j < testGrid.getWidth()-1; j++) {
 				PacObjects curr = testGrid.getCell(j,i);
-				if(curr != PacObjects.PACMAN) {
+				if (curr != PacObjects.PACMAN) {
 					assertEquals(PacObjects.DOT, curr);
 				}
 			}
@@ -193,7 +193,14 @@ public class PacmanGridTest extends TestCase {
 	}
 	
 	public void testGetDotCount() {
-		assertEquals((defaultGridWidth*defaultGridHeight)-1, testGrid.getDotCount());
+		// Top and Bottom wall plus Left and Right wall minus double counted corners
+		int wallCount = defaultGridWidth*2 + defaultGridHeight*2 - 4;
+		int pacmanCount = 1; // Pacman's spawn point
+		
+		// Total cells - (Wall cells + Pacman spawn)
+		int expectedCount = (defaultGridWidth*defaultGridHeight) - (wallCount + pacmanCount);
+		
+		assertEquals(expectedCount, testGrid.getDotCount());
 	}
 	
 	public void testGetDotCountAfter1Eat() {
@@ -228,5 +235,27 @@ public class PacmanGridTest extends TestCase {
 		}
 		
 		assertEquals(50, testGrid.getLevelScore());
+	}
+	
+	public void testEdgeWall() {
+		// Top row are walls
+		for (int i = 0; i < testGrid.getWidth(); i++) {
+			assertEquals(PacObjects.WALL, testGrid.getCell(i, 0));
+		}
+		
+		// Bottom row are walls
+		for (int i = 0; i < testGrid.getWidth(); i++) {
+			assertEquals(PacObjects.WALL, testGrid.getCell(i, testGrid.getHeight()-1));
+		}
+		
+		// Left column are walls
+		for (int i = 0; i < testGrid.getHeight(); i++) {
+			assertEquals(PacObjects.WALL, testGrid.getCell(0, i));
+		}
+		
+		// Right column are walls
+		for (int i = 0; i < testGrid.getHeight(); i++) {
+			assertEquals(PacObjects.WALL, testGrid.getCell(testGrid.getWidth()-1, i));
+		}
 	}
 }

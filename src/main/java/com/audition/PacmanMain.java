@@ -28,6 +28,8 @@ public class PacmanMain {
 					System.out.print(gameGrid.getPacDisplay() + " ");
 				} else if (curr == PacObjects.DOT) {
 					System.out.print(". ");
+				} else if (curr == PacObjects.WALL) {
+					System.out.print("# ");
 				} else {
 					System.out.print("  ");
 				}
@@ -48,8 +50,8 @@ public class PacmanMain {
 		
 		try {
 			while (input != 'q') {
-				//gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
-				gameGrid = new PacmanGrid(2, 2, 0, 0);
+				gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
+				gameGrid = new PacmanGrid(10, 10, 5, 5);
 				
 				// Print starting game state
 				printGrid(levelCount, gameGrid.getLevelScore());
