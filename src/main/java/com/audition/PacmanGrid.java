@@ -91,6 +91,10 @@ public class PacmanGrid {
 		}
 		
 		// Create wrap around holes half way through each wall
+		grid[0][gridWidth/2] = PacObjects.EMPTY;
+		grid[gridHeight-1][gridWidth/2] = PacObjects.EMPTY;
+		grid[gridHeight/2][0] = PacObjects.EMPTY;
+		grid[gridHeight/2][gridWidth-1] = PacObjects.EMPTY;
 		
 		// spawn pacman
 		pacman = new PacmanCharacter(pacmanX, pacmanY);

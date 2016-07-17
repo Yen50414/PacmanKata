@@ -97,42 +97,42 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testGridWrapAroundUp() {
 		// Start Pacman up at top of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, 0);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, 0);
 		
 		testGrid.update('w');
 		
 		// Pacman should be at bottom of grid
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultPacmanX, defaultGridHeight-1));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultGridWidth/2, defaultGridHeight-1));
 	}
 	
 	public void testGridWrapAroundDown() {
 		// Start Pacman up at bottom of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultGridHeight-1);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, defaultGridHeight-1);
 		
 		testGrid.update('s');
 		
 		// Pacman should be at top of grid
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultPacmanX, 0));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultGridWidth/2, 0));
 	}
 	
 	public void testGridWrapAroundLeft() {
 		// Start Pacman up at left of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, 0, defaultPacmanY);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, 0, defaultGridHeight/2);
 		
 		testGrid.update('a');
 		
 		// Pacman should be at right of grid
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultGridWidth-1, defaultPacmanY));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(defaultGridWidth-1, defaultGridHeight/2));
 	}
 	
 	public void testGridWrapAroundRight() {
 		// Start Pacman up at right of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth-1, defaultPacmanY);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth-1, defaultGridHeight/2);
 		
 		testGrid.update('d');
 		
 		// Pacman should be at left of grid
-		assertEquals(PacObjects.PACMAN, testGrid.getCell(0, defaultPacmanY));
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(0, defaultGridHeight/2));
 	}
 	
 	public void testEatDot() {
@@ -240,22 +240,30 @@ public class PacmanGridTest extends TestCase {
 	public void testEdgeWall() {
 		// Top row are walls
 		for (int i = 0; i < testGrid.getWidth(); i++) {
-			assertEquals(PacObjects.WALL, testGrid.getCell(i, 0));
+			if (i != testGrid.getWidth()/2) {
+				assertEquals(PacObjects.WALL, testGrid.getCell(i, 0));
+			}
 		}
 		
 		// Bottom row are walls
 		for (int i = 0; i < testGrid.getWidth(); i++) {
-			assertEquals(PacObjects.WALL, testGrid.getCell(i, testGrid.getHeight()-1));
+			if (i != testGrid.getWidth()/2) {
+				assertEquals(PacObjects.WALL, testGrid.getCell(i, testGrid.getHeight()-1));
+			}
 		}
 		
 		// Left column are walls
 		for (int i = 0; i < testGrid.getHeight(); i++) {
-			assertEquals(PacObjects.WALL, testGrid.getCell(0, i));
+			if (i != testGrid.getHeight()/2) {
+				assertEquals(PacObjects.WALL, testGrid.getCell(0, i));
+			}
 		}
 		
 		// Right column are walls
 		for (int i = 0; i < testGrid.getHeight(); i++) {
-			assertEquals(PacObjects.WALL, testGrid.getCell(testGrid.getWidth()-1, i));
+			if (i != testGrid.getHeight()/2) {
+				assertEquals(PacObjects.WALL, testGrid.getCell(testGrid.getWidth()-1, i));
+			}
 		}
 	}
 	
@@ -273,7 +281,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeys() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(4, 4, 2, 2);
+		testGrid = new PacmanGrid(5, 5, 3, 3);
 		
 		// Save current position
 		int expectedY = testGrid.getPacmanPosY();
@@ -285,7 +293,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeya() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(4, 4, 1, 1);
+		testGrid = new PacmanGrid(5, 5, 1, 1);
 		
 		// Save current position
 		int expectedX = testGrid.getPacmanPosX();
@@ -297,7 +305,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeyd() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(4, 4, 2, 2);
+		testGrid = new PacmanGrid(5, 5, 3, 3);
 		
 		// Save current position
 		int expectedX = testGrid.getPacmanPosX();

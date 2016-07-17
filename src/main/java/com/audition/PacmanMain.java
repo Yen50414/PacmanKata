@@ -17,7 +17,7 @@ public class PacmanMain {
 		// Print current level
 		System.out.println("Level " + level);
 		
-		// Get Line Seperator for current OS
+		// Get Line Separator for current OS
 		String eol = System.getProperty("line.separator");
 		
 		// Print current state of grid to screen
@@ -52,8 +52,8 @@ public class PacmanMain {
 			while (input != 'q') {
 				//gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
 				//gameGrid = new PacmanGrid(10, 10, 5, 5);
-				//gameGrid = new PacmanGrid(4, 4, 1, 1);
-				gameGrid = new PacmanGrid(2, 2, 1, 1);
+				gameGrid = new PacmanGrid(5, 5, 3, 3);
+				//gameGrid = new PacmanGrid(2, 2, 1, 1);
 				
 				// Print starting game state
 				printGrid(levelCount, gameGrid.getLevelScore());
