@@ -7,6 +7,13 @@ public class PacmanGrid {
 	
 	private PacObjects[][] grid;
 	
+	private boolean monsterSpawned;
+	
+	private Monster monster1;
+	private Monster monster2;
+	private Monster monster3;
+	private Monster monster4;
+	
 	private PacmanCharacter pacman;
 	
 	private int dotsLeft;
@@ -96,12 +103,18 @@ public class PacmanGrid {
 		grid[gridHeight/2][0] = PacObjects.EMPTY;
 		grid[gridHeight/2][gridWidth-1] = PacObjects.EMPTY;
 		
-		if (monsters) {
+		monsterSpawned = monsters;
+		if (monsterSpawned) {
 			// spawn monsters
-			grid[1][1] = PacObjects.MONSTER;
-			grid[1][gridWidth-2] = PacObjects.MONSTER;
-			grid[gridHeight-2][1] = PacObjects.MONSTER;
-			grid[gridHeight-2][gridWidth-2] = PacObjects.MONSTER;
+			monster1 = new Monster(1, 1);
+			monster2 = new Monster(gridWidth-2, 1);
+			monster3 = new Monster(1, gridHeight-2);
+			monster4 = new Monster(gridWidth-2, gridHeight-2);
+			
+			grid[monster1.getPosY()][monster1.getPosX()] = PacObjects.MONSTER;
+			grid[monster2.getPosY()][monster2.getPosX()] = PacObjects.MONSTER;
+			grid[monster3.getPosY()][monster3.getPosX()] = PacObjects.MONSTER;
+			grid[monster4.getPosY()][monster4.getPosX()] = PacObjects.MONSTER;
 		}
 		
 		// spawn pacman
@@ -136,6 +149,31 @@ public class PacmanGrid {
 		// Do nothing if pacman wants to move into a wall
 		PacObjects forward = lookAhead(input);
 		if (forward != PacObjects.WALL) {
+			
+			// Update monster movements
+			if (monsterSpawned) {
+				// Update current monster location
+				grid[monster1.getPosY()][monster1.getPosX()] = monster1.getPreviousObject();
+				grid[monster2.getPosY()][monster2.getPosX()] = monster2.getPreviousObject();
+				grid[monster3.getPosY()][monster3.getPosX()] = monster3.getPreviousObject();
+				grid[monster4.getPosY()][monster4.getPosX()] = monster4.getPreviousObject();
+				
+				monster1.update(gridWidth, gridHeight);
+				monster2.update(gridWidth, gridHeight);
+				monster3.update(gridWidth, gridHeight);
+				monster4.update(gridWidth, gridHeight);
+				
+				// Update grid with new monster location
+				monster1.setPreviousObject(grid[monster1.getPosY()][monster1.getPosX()]);
+				monster2.setPreviousObject(grid[monster2.getPosY()][monster2.getPosX()]);
+				monster3.setPreviousObject(grid[monster3.getPosY()][monster3.getPosX()]);
+				monster4.setPreviousObject(grid[monster4.getPosY()][monster4.getPosX()]);
+				grid[monster1.getPosY()][monster1.getPosX()] = PacObjects.MONSTER;
+				grid[monster2.getPosY()][monster2.getPosX()] = PacObjects.MONSTER;
+				grid[monster3.getPosY()][monster3.getPosX()] = PacObjects.MONSTER;
+				grid[monster4.getPosY()][monster4.getPosX()] = PacObjects.MONSTER;
+			}
+			
 			// If monster, pacman dies and respawns
 			if (forward == PacObjects.MONSTER) {
 				

@@ -315,6 +315,22 @@ public class PacmanGridTest extends TestCase {
 		assertEquals(expectedX, testGrid.getPacmanPosX());
 	}
 	
+	public void testMonster1Spawns() {
+		assertEquals(PacObjects.MONSTER, testGrid.getCell(1, 1));
+	}
+	
+	public void testMonster2Spawns() {
+		assertEquals(PacObjects.MONSTER, testGrid.getCell(defaultGridWidth-2, 1));
+	}
+	
+	public void testMonster3Spawns() {
+		assertEquals(PacObjects.MONSTER, testGrid.getCell(1, defaultGridHeight-2));
+	}
+	
+	public void testMonster4Spawns() {
+		assertEquals(PacObjects.MONSTER, testGrid.getCell(defaultGridWidth-2, defaultGridHeight-2));
+	}
+	
 	public void testPacmanDieOnMonster() {
 		// Spawn pacman next to monster
 		testGrid = new PacmanGrid(5, 5, 1, 2, true);

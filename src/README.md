@@ -23,4 +23,4 @@ Pacman's spawn point can be specified to the constructor to allow testing as wel
 
 Monsters:
 
-Monsters spawn at the 4 corners of the grid.  Unfortunately for now, they do not move.
+Monsters spawn at the 4 corners of the grid.  They move according to randomly generated commands and have the ability to move through walls.
