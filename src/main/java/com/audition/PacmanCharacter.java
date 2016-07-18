@@ -7,6 +7,9 @@ public class PacmanCharacter {
 	private int pacmanPosX;
 	private int pacmanPosY;
 	
+	private int spawnX;
+	private int spawnY;
+	
 	private boolean mouthOpen;
 	
 	public PacmanCharacter(int x, int y) {
@@ -14,6 +17,9 @@ public class PacmanCharacter {
 		
 		pacmanPosX = x;
 		pacmanPosY = y;
+		
+		spawnX = x;
+		spawnY = y;
 		
 		mouthOpen = true;
 	}
@@ -68,5 +74,10 @@ public class PacmanCharacter {
 
 	public boolean getMouthOpen() {
 		return mouthOpen;
+	}
+	
+	public void respawn() {
+		pacmanPosX = spawnX;
+		pacmanPosY = spawnY;
 	}
 }

@@ -42,7 +42,7 @@ public class PacmanGrid {
 		return grid[aheadY][aheadX]; // default return wall to not do anything
 	}
 	
-	public PacmanGrid(int width, int height, int pacmanX, int pacmanY) {
+	public PacmanGrid(int width, int height, int pacmanX, int pacmanY, boolean monsters) {
 		gridWidth = width;
 		gridHeight = height;
 		
@@ -96,6 +96,14 @@ public class PacmanGrid {
 		grid[gridHeight/2][0] = PacObjects.EMPTY;
 		grid[gridHeight/2][gridWidth-1] = PacObjects.EMPTY;
 		
+		if (monsters) {
+			// spawn monsters
+			grid[1][1] = PacObjects.MONSTER;
+			grid[1][gridWidth-2] = PacObjects.MONSTER;
+			grid[gridHeight-2][1] = PacObjects.MONSTER;
+			grid[gridHeight-2][gridWidth-2] = PacObjects.MONSTER;
+		}
+		
 		// spawn pacman
 		pacman = new PacmanCharacter(pacmanX, pacmanY);
 		grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
@@ -122,26 +130,42 @@ public class PacmanGrid {
 		return pacman.getPacmanPosY();
 	}
 	
-	public void update(char input) {
+	public boolean update(char input) {
+		boolean death = false;
 		
 		// Do nothing if pacman wants to move into a wall
-		if (lookAhead(input) != PacObjects.WALL) {
-		
-			// Update current pacman location
-			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
-			
-			pacman.update(input, gridWidth, gridHeight);
-			
-			// Update dot count and score if one is eaten
-			if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
-				dotsLeft--;
-				levelScore = levelScore + 10;
+		PacObjects forward = lookAhead(input);
+		if (forward != PacObjects.WALL) {
+			// If monster, pacman dies and respawns
+			if (forward == PacObjects.MONSTER) {
+				
+				death = true;
+				
+				// Update current pacman location
+				grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
+				
+				// Respawn pacman
+				pacman.respawn();
+				grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
+				
+			} else {
+				// Update current pacman location
+				grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.EMPTY;
+				
+				pacman.update(input, gridWidth, gridHeight);
+				
+				// Update dot count and score if one is eaten
+				if (grid[getPacmanPosY()][getPacmanPosX()] == PacObjects.DOT) {
+					dotsLeft--;
+					levelScore = levelScore + 10;
+				}
+				
+				// Update grid with new pacman location
+				grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
 			}
-			
-			// Update grid with new pacman location
-			grid[getPacmanPosY()][getPacmanPosX()] = PacObjects.PACMAN;
-			
 		}
+		
+		return death;
 	}
 
 	public String getPacDisplay() {

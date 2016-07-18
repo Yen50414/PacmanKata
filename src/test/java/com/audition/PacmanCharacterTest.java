@@ -245,4 +245,14 @@ public class PacmanCharacterTest extends TestCase {
 		// Pacman mouth should be closed
 		assertEquals(true, testChar.getMouthOpen());
 	}
+	
+	public void testRespawnPosX() {
+		testChar.respawn();
+		assertEquals(defaultPacmanX, testChar.getPacmanPosX());
+	}
+	
+	public void testRespawnPosY() {
+		testChar.respawn();
+		assertEquals(defaultPacmanY, testChar.getPacmanPosY());
+	}
 }

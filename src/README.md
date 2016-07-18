@@ -19,3 +19,8 @@ Pacman Character:
 Pacman is set to spawn at 14, 23, roughly where he'd spawn in the original Pacman game.
 
 Pacman's spawn point can be specified to the constructor to allow testing as well as more complex grid designs.
+
+
+Monsters:
+
+Monsters spawn at the 4 corners of the grid.  Unfortunately for now, they do not move.

@@ -1,5 +1,5 @@
 package com.audition;
 
 public enum PacObjects {
-	PACMAN, DOT, EMPTY, WALL
+	PACMAN, DOT, EMPTY, WALL, MONSTER
 }

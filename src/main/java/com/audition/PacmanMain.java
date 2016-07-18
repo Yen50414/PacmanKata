@@ -12,7 +12,7 @@ public class PacmanMain {
 	private static int defaultPacmanX = 14;
 	private static int defaultPacmanY = 23;
 	
-	private static void printGrid(int level, int score) {
+	private static void printGrid(int level, int score, int life) {
 		
 		// Print current level
 		System.out.println("Level " + level);
@@ -30,6 +30,8 @@ public class PacmanMain {
 					System.out.print(". ");
 				} else if (curr == PacObjects.WALL) {
 					System.out.print("# ");
+				} else if (curr == PacObjects.MONSTER) {
+					System.out.print("M ");
 				} else {
 					System.out.print("  ");
 				}
@@ -39,32 +41,37 @@ public class PacmanMain {
 		
 		// Print score
 		System.out.println("Level Score: " + score);
+		System.out.println("Lives Left: " + life);
 	}
 
 	public static void main(String[] args) {
 		
 		int levelCount = 1;
 		int totalScore = 0;
+		int livesLeft = 2;
 		Scanner keyboard = new Scanner(System.in);
 		char input = ' ';
 		
 		try {
-			while (input != 'q') {
-				gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
+			while (livesLeft > -1 && input != 'q') {
+				gameGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY, true);
 				
 				// Print starting game state
-				printGrid(levelCount, gameGrid.getLevelScore());
+				printGrid(levelCount, gameGrid.getLevelScore(), livesLeft);
 				
 				// Loop until level complete
-				while (gameGrid.getDotCount() > 0 && input != 'q') {
+				while (gameGrid.getDotCount() > 0 && livesLeft > -1 && input != 'q') {
 					input = keyboard.next().charAt(0);
 					
 					// Update and print new game state
-					gameGrid.update(input);
-					printGrid(levelCount, gameGrid.getLevelScore());
+					boolean death = gameGrid.update(input);
+					if (death) {
+						livesLeft--;
+					}
+					printGrid(levelCount, gameGrid.getLevelScore(), livesLeft);
 				}
 				totalScore = totalScore + gameGrid.getLevelScore();
-					
+				
 				levelCount++;
 			}
 			

@@ -13,7 +13,7 @@ public class PacmanGridTest extends TestCase {
 	private static int defaultPacmanY = 23;
 	
 	public void setUp() {
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultPacmanX, defaultPacmanY, true);
 	}
 	
 	public void testGenerateGrid() {
@@ -32,7 +32,7 @@ public class PacmanGridTest extends TestCase {
 		for (int i = 1; i < testGrid.getHeight()-1; i++) {
 			for (int j = 1; j < testGrid.getWidth()-1; j++) {
 				PacObjects curr = testGrid.getCell(j,i);
-				if (curr != PacObjects.PACMAN) {
+				if (curr != PacObjects.PACMAN && curr != PacObjects.MONSTER) {
 					assertEquals(PacObjects.DOT, curr);
 				}
 			}
@@ -97,7 +97,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testGridWrapAroundUp() {
 		// Start Pacman up at top of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, 0);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, 0, false);
 		
 		testGrid.update('w');
 		
@@ -107,7 +107,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testGridWrapAroundDown() {
 		// Start Pacman up at bottom of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, defaultGridHeight-1);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth/2, defaultGridHeight-1, false);
 		
 		testGrid.update('s');
 		
@@ -117,7 +117,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testGridWrapAroundLeft() {
 		// Start Pacman up at left of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, 0, defaultGridHeight/2);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, 0, defaultGridHeight/2, false);
 		
 		testGrid.update('a');
 		
@@ -127,7 +127,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testGridWrapAroundRight() {
 		// Start Pacman up at right of grid
-		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth-1, defaultGridHeight/2);
+		testGrid = new PacmanGrid(defaultGridWidth, defaultGridHeight, defaultGridWidth-1, defaultGridHeight/2, false);
 		
 		testGrid.update('d');
 		
@@ -269,7 +269,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeyw() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(4, 4, 1, 1);
+		testGrid = new PacmanGrid(4, 4, 1, 1, false);
 		
 		// Save current position
 		int expectedY = testGrid.getPacmanPosY();
@@ -281,7 +281,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeys() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(5, 5, 3, 3);
+		testGrid = new PacmanGrid(5, 5, 3, 3, false);
 		
 		// Save current position
 		int expectedY = testGrid.getPacmanPosY();
@@ -293,7 +293,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeya() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(5, 5, 1, 1);
+		testGrid = new PacmanGrid(5, 5, 1, 1, false);
 		
 		// Save current position
 		int expectedX = testGrid.getPacmanPosX();
@@ -305,7 +305,7 @@ public class PacmanGridTest extends TestCase {
 	
 	public void testPacmanStopOnWallKeyd() {
 		// Spawn pacman with wall above
-		testGrid = new PacmanGrid(5, 5, 3, 3);
+		testGrid = new PacmanGrid(5, 5, 3, 3, false);
 		
 		// Save current position
 		int expectedX = testGrid.getPacmanPosX();
@@ -313,5 +313,23 @@ public class PacmanGridTest extends TestCase {
 		testGrid.update('d');
 		
 		assertEquals(expectedX, testGrid.getPacmanPosX());
+	}
+	
+	public void testPacmanDieOnMonster() {
+		// Spawn pacman next to monster
+		testGrid = new PacmanGrid(5, 5, 1, 2, true);
+		
+		boolean death = testGrid.update('w');
+		
+		assertEquals(true, death);
+	}
+	
+	public void testPacmanRespawnOnMonster() {
+		// Spawn pacman next to monster
+		testGrid = new PacmanGrid(5, 5, 1, 2, true);
+		
+		testGrid.update('w');
+		
+		assertEquals(PacObjects.PACMAN, testGrid.getCell(1, 2));
 	}
 }
