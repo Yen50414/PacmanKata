@@ -123,11 +123,11 @@ public class PacmanGrid {
 	}
 	
 	public int getPacmanPosX() {
-		return pacman.getPacmanPosX();
+		return pacman.getPosX();
 	}
 	
 	public int getPacmanPosY() {
-		return pacman.getPacmanPosY();
+		return pacman.getPosY();
 	}
 	
 	public boolean update(char input) {

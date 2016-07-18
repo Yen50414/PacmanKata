@@ -78,42 +78,42 @@ public class PacmanCharacterTest extends TestCase {
 	
 	public void testUpdatePosKeyw() {
 		// Save current pos
-		int posY = testChar.getPacmanPosY();
+		int posY = testChar.getPosY();
 		
 		testChar.update('w', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move up
-		assertEquals(posY-1, testChar.getPacmanPosY());
+		assertEquals(posY-1, testChar.getPosY());
 	}
 	
 	public void testUpdatePosKeys() {
 		// Save current pos
-		int posY = testChar.getPacmanPosY();
+		int posY = testChar.getPosY();
 		
 		testChar.update('s', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move down
-		assertEquals(posY+1, testChar.getPacmanPosY());
+		assertEquals(posY+1, testChar.getPosY());
 	}
 	
 	public void testUpdatePosKeya() {
 		// Save current pos
-		int posX = testChar.getPacmanPosX();
+		int posX = testChar.getPosX();
 		
 		testChar.update('a', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move up
-		assertEquals(posX-1, testChar.getPacmanPosX());
+		assertEquals(posX-1, testChar.getPosX());
 	}
 	
 	public void testUpdatePosKeyd() {
 		// Save current pos
-		int posX = testChar.getPacmanPosX();
+		int posX = testChar.getPosX();
 		
 		testChar.update('d', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should move down
-		assertEquals(posX+1, testChar.getPacmanPosX());
+		assertEquals(posX+1, testChar.getPosX());
 	}
 	
 	public void testPosWrapAroundUp() {
@@ -123,7 +123,7 @@ public class PacmanCharacterTest extends TestCase {
 		testChar.update('w', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should be at bottom of grid
-		assertEquals(defaultGridHeight-1, testChar.getPacmanPosY());
+		assertEquals(defaultGridHeight-1, testChar.getPosY());
 	}
 	
 	public void testPosWrapAroundDown() {
@@ -133,7 +133,7 @@ public class PacmanCharacterTest extends TestCase {
 		testChar.update('s', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should be at top of grid
-		assertEquals(0, testChar.getPacmanPosY());
+		assertEquals(0, testChar.getPosY());
 	}
 	
 	public void testPosWrapAroundLeft() {
@@ -143,7 +143,7 @@ public class PacmanCharacterTest extends TestCase {
 		testChar.update('a', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should be at right of grid
-		assertEquals(defaultGridWidth-1, testChar.getPacmanPosX());
+		assertEquals(defaultGridWidth-1, testChar.getPosX());
 	}
 	
 	public void testPosWrapAroundRight() {
@@ -153,7 +153,7 @@ public class PacmanCharacterTest extends TestCase {
 		testChar.update('d', defaultGridWidth, defaultGridHeight);
 		
 		// Pacman should be at left of grid
-		assertEquals(0, testChar.getPacmanPosX());
+		assertEquals(0, testChar.getPosX());
 	}
 	
 	public void testRotateOnKeyw() {
@@ -248,11 +248,11 @@ public class PacmanCharacterTest extends TestCase {
 	
 	public void testRespawnPosX() {
 		testChar.respawn();
-		assertEquals(defaultPacmanX, testChar.getPacmanPosX());
+		assertEquals(defaultPacmanX, testChar.getPosX());
 	}
 	
 	public void testRespawnPosY() {
 		testChar.respawn();
-		assertEquals(defaultPacmanY, testChar.getPacmanPosY());
+		assertEquals(defaultPacmanY, testChar.getPosY());
 	}
 }
