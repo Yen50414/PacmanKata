@@ -1,3 +1,9 @@
+Instructions:
+
+mvn package
+java -cp target/java_audition-1.0-SNAPSHOT.jar com.audition.PacmanMain
+
+
 Controls:
 
 w, a, s, d keys for Up, Left, Down, and Right.
